@@ -16,7 +16,6 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public GameObject defaultMenu;
     public GameObject spiritSoilMenu;
     public GameObject selectedSpiritSoilBasicInfoPanel;
-    public GameObject selectedSpiritSoilOperationMenu;
     public GameObject spiritSoilAdjustmentMenu;
 
     public GameObject grid;
@@ -32,7 +31,6 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
         defaultMenu.SetActive(true);
         spiritSoilMenu.SetActive(false);
         selectedSpiritSoilBasicInfoPanel.SetActive(false);
-        selectedSpiritSoilOperationMenu.SetActive(false);
         spiritSoilAdjustmentMenu.SetActive(false);
         grid.SetActive(false);
         cursor.SetActive(false);
@@ -40,10 +38,6 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     }
     private void Update()
     {
-        if (Physics.Raycast(PlayerController.Instance.ray, out raycastHit, Mathf.Infinity, layerMask) && selectedSpiritSoil == null && !isMoving)
-        {
-            if (Input.GetMouseButtonDown(0)) { SelectSpiritSoil(); }
-        }
         if (isMoving)
         {
             if (levelPlane.Raycast(PlayerController.Instance.ray, out float enter) && !EventSystem.current.IsPointerOverGameObject())
@@ -63,6 +57,10 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
                 selectedSpiritSoil.transform.position = cursor.transform.position;
                 selectedSpiritSoil.coord = GetWorldPositionCoord(cursor.transform.position);
             }
+        }
+        if (Physics.Raycast(PlayerController.Instance.ray, out raycastHit, Mathf.Infinity, layerMask) && selectedSpiritSoil == null && !isMoving)
+        {
+            if (Input.GetMouseButtonDown(0)) { SelectSpiritSoil(); }
         }
     }
     #region 息壤菜单
@@ -90,16 +88,20 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     #region 选择场景中的息壤
     public void SelectSpiritSoil()
     {
-        selectedSpiritSoil = raycastHit.collider.GetComponentInParent<SpiritSoil>();
-        selectedSpiritSoilBasicInfoPanel.SetActive(true);
-        selectedSpiritSoilOperationMenu.SetActive(true);
         defaultMenu.SetActive(false);
 
+        selectedSpiritSoil = raycastHit.collider.GetComponentInParent<SpiritSoil>();
         selectedSpiritSoil.Select();
+        selectedSpiritSoilBasicInfoPanel.SetActive(true);
+        spiritSoilAdjustmentMenu.SetActive(true);
+        grid.SetActive(true);
+        cursor.SetActive(true);
+        isMoving = true;
+
+        UpdateLevelPlane(selectedSpiritSoil.coord.y);
     }
     public void EnterAdjustMode()
     {
-        selectedSpiritSoilOperationMenu.SetActive(false);
         spiritSoilAdjustmentMenu.SetActive(true);
         grid.SetActive(true);
         cursor.SetActive(true);
@@ -110,15 +112,18 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public void RecycleSpiritSoil()
     {
         selectedSpiritSoilBasicInfoPanel.SetActive(false);
-        selectedSpiritSoilOperationMenu.SetActive(false);
+        spiritSoilAdjustmentMenu.SetActive(false);
+
         defaultMenu.SetActive(true);
         Destroy(selectedSpiritSoil.gameObject);
         selectedSpiritSoil = null;
+        isMoving = false;
+        grid.SetActive(false);
+        cursor.SetActive(false);
     }
     public void DeselectSpiritSoil()
     {
         selectedSpiritSoilBasicInfoPanel.SetActive(false);
-        selectedSpiritSoilOperationMenu.SetActive(false);
         defaultMenu.SetActive(true);
         selectedSpiritSoil.Deselect();
         selectedSpiritSoil = null;

@@ -1,0 +1,15 @@
+﻿Code,CoordX,CoordY,CoordH,SocketsForward,SocketsRight,SocketsBack,SocketsLeft,SocketsUp,SocketsDown
+0000,0,0,0,1,1,1,1,0,0
+0001,0,0,0,tr,1,1,1,0,0
+0002,0,0,0,tr,1,1,tr,0,0
+0003,0,0,0,tr,1,tr,1,0,0
+0004,0,0,0,tr,1,tr,tr,0,0
+0005,0,0,0,tr,tr,tr,tr,0,0
+0006,0,0,0,in,in,tr,tr,0,0
+0006,0,1,0,1,in,in,1,0,0
+0006,1,0,0,in,in,1,in,0,0
+0006,1,1,0,1,in,in,in,0,0
+0006,2,0,0,in,1,1,in,0,0
+0006,2,1,0,1,1,in,in,0,0
+w000,0,0,0,1,1,1,1,0,0
+w001,0,0,0,1,1,1,1,0,0

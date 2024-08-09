@@ -3,15 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public struct SpiritSoilPlaceInfo
+{
+    public string ID;
+    public Vector3Int coord;
+    public int rotation;
+    public SpiritSoilPlaceInfo(string ID, Vector3Int coord, int rotation)
+    {
+        this.ID = ID;
+        this.coord = coord;
+        this.rotation = rotation;
+    }
+}
+
 public class SpiritSoilManager : Singleton<SpiritSoilManager>
 {
     public static Vector3 scale = new Vector3(5f, 2.5f, 5f);
     public static Vector3Int GetWorldPositionCoord(Vector3 coord)
     { return new Vector3Int(Mathf.RoundToInt(coord.x / scale.x), Mathf.RoundToInt(coord.y / scale.y), Mathf.RoundToInt(coord.z / scale.z)); }
+
+    public Dictionary<Vector3Int, SpiritSoilPlaceInfo> spiritSoilDic = new Dictionary<Vector3Int, SpiritSoilPlaceInfo>();
+    public List<Vector3Int> gridOccupation = new List<Vector3Int>();
     [Header("鼠标选择")]
     public LayerMask layerMask;
     public RaycastHit raycastHit;
-    
+
     [Header("菜单")]
     public GameObject defaultMenu;
     public GameObject spiritSoilMenu;
@@ -25,7 +41,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public int level;
     public Plane levelPlane;
     public SpiritSoil selectedSpiritSoil;
-    public bool isMoving;
+    public bool spiritSoilSelected;
     private void Start()
     {
         defaultMenu.SetActive(true);
@@ -38,7 +54,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     }
     private void Update()
     {
-        if (isMoving)
+        if (spiritSoilSelected)
         {
             if (levelPlane.Raycast(PlayerController.Instance.ray, out float enter) && !EventSystem.current.IsPointerOverGameObject())
             {
@@ -48,17 +64,22 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
             else { cursor.SetActive(false); }
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
-                if(selectedSpiritSoil == null) 
-                { 
-                    GameObject spiritSoil_Instance = Instantiate(spiritSoil_Prefab, transform); 
-                    selectedSpiritSoil = spiritSoil_Instance.GetComponent<SpiritSoil>();
-                    selectedSpiritSoil.Select();
+                Vector3Int cursorCoord = GetWorldPositionCoord(cursor.transform.position);
+                if (spiritSoilDic.ContainsKey(cursorCoord)) { }
+                else
+                {
+                    if (selectedSpiritSoil == null)
+                    {
+                        GameObject spiritSoil_Instance = Instantiate(spiritSoil_Prefab, transform);
+                        selectedSpiritSoil = spiritSoil_Instance.GetComponent<SpiritSoil>();
+                        selectedSpiritSoil.Select();
+                    }
+                    selectedSpiritSoil.transform.position = cursor.transform.position;
+                    selectedSpiritSoil.coord = GetWorldPositionCoord(cursor.transform.position);
                 }
-                selectedSpiritSoil.transform.position = cursor.transform.position;
-                selectedSpiritSoil.coord = GetWorldPositionCoord(cursor.transform.position);
             }
         }
-        if (Physics.Raycast(PlayerController.Instance.ray, out raycastHit, Mathf.Infinity, layerMask) && selectedSpiritSoil == null && !isMoving)
+        if (Physics.Raycast(PlayerController.Instance.ray, out raycastHit, Mathf.Infinity, layerMask) && selectedSpiritSoil == null && !spiritSoilSelected)
         {
             if (Input.GetMouseButtonDown(0)) { SelectSpiritSoil(); }
         }
@@ -80,7 +101,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
         spiritSoilAdjustmentMenu.SetActive(true);
         grid.SetActive(true);
         cursor.SetActive(true);
-        isMoving = true;
+        spiritSoilSelected = true;
 
         UpdateLevelPlane(level);
     }
@@ -88,26 +109,21 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     #region 选择场景中的息壤
     public void SelectSpiritSoil()
     {
-        defaultMenu.SetActive(false);
-
+        // 选择息壤
         selectedSpiritSoil = raycastHit.collider.GetComponentInParent<SpiritSoil>();
         selectedSpiritSoil.Select();
+        spiritSoilDic.Remove(selectedSpiritSoil.coord);
+
+        // 更新UI(菜单/基准平面和位置光标)
+        defaultMenu.SetActive(false);
         selectedSpiritSoilBasicInfoPanel.SetActive(true);
         spiritSoilAdjustmentMenu.SetActive(true);
         grid.SetActive(true);
         cursor.SetActive(true);
-        isMoving = true;
-
         UpdateLevelPlane(selectedSpiritSoil.coord.y);
-    }
-    public void EnterAdjustMode()
-    {
-        spiritSoilAdjustmentMenu.SetActive(true);
-        grid.SetActive(true);
-        cursor.SetActive(true);
-        isMoving = true;
 
-        UpdateLevelPlane(selectedSpiritSoil.coord.y);
+        // 设置为选中息壤状态
+        spiritSoilSelected = true;
     }
     public void RecycleSpiritSoil()
     {
@@ -117,7 +133,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
         defaultMenu.SetActive(true);
         Destroy(selectedSpiritSoil.gameObject);
         selectedSpiritSoil = null;
-        isMoving = false;
+        spiritSoilSelected = false;
         grid.SetActive(false);
         cursor.SetActive(false);
     }
@@ -140,14 +156,20 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     }
     public void Confirm()
     {
+        // UI调整
         selectedSpiritSoilBasicInfoPanel.SetActive(false);
         spiritSoilAdjustmentMenu.SetActive(false);
         grid.SetActive(false);
         cursor.SetActive(false);
         defaultMenu.SetActive(true);
+
+        // 更新数据
+        spiritSoilDic.Add(selectedSpiritSoil.coord, new SpiritSoilPlaceInfo(selectedSpiritSoil.ID, selectedSpiritSoil.coord, selectedSpiritSoil.rotation));
+
+        // 取消选择
         selectedSpiritSoil.Deselect();
         selectedSpiritSoil = null;
-        isMoving = false;
+        spiritSoilSelected = false;
     }
     public void LevelPlaneUp()
     {
@@ -165,4 +187,9 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
         grid.transform.position = height * Vector3.up;
     }
     #endregion
+
+    public bool SpiritSoilCheck(Vector3Int coord, string ID)
+    {
+        return spiritSoilDic.ContainsKey(coord) && spiritSoilDic[coord].ID == ID;
+    }
 }

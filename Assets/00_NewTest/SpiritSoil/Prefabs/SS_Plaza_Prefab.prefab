@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: ID
+      value: Plaza
+      objectReference: {fileID: 0}
     - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -102,3 +106,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spiritSoil: {fileID: 3780957505831410702}
+  forward: 0
+  right: 0
+  back: 0
+  left: 0
+  forwardRight: 0
+  rightBack: 0
+  backLeft: 0
+  leftForward: 0

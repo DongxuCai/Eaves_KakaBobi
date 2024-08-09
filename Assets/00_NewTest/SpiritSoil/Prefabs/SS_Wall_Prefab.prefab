@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3821843122595220283
+--- !u!1001 &3577364008564159171
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,10 +10,10 @@ PrefabInstance:
     - target: {fileID: 935277203877109292, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5967931361126371462, guid: 46dbcd947704a104391a7c339efae594, type: 3}
+      objectReference: {fileID: -7321724667112800727, guid: 2dec226efd8b9ec4baf6e9eada9ac1e3, type: 3}
     - target: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Name
-      value: SS_Tripod_Prefab
+      value: SS_Wall_Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 9207641985492401487, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_RootOrder
@@ -59,30 +59,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: ID
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: afbdc951263e3004ca1b116b6b22d50c, type: 2}
+    - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 12a3e1538d19f534fa9dbe06132048b9, type: 2}
     - target: {fileID: 9207641986303773244, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5967931361126371462, guid: 46dbcd947704a104391a7c339efae594, type: 3}
+      objectReference: {fileID: -7321724667112800727, guid: 2dec226efd8b9ec4baf6e9eada9ac1e3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24861808431721f419212eb0027ab1bc, type: 3}
---- !u!1 &5386858793498965621 stripped
+--- !u!1 &5651247903042490253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
-  m_PrefabInstance: {fileID: 3821843122595220283}
+  m_PrefabInstance: {fileID: 3577364008564159171}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4326851714214137499
+--- !u!114 &5651247903042490227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+  m_PrefabInstance: {fileID: 3577364008564159171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5651247903042490253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4420c37c9b4d84d9994a3a6a6dcf7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8990057671116203807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5386858793498965621}
+  m_GameObject: {fileID: 5651247903042490253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95fe83a31fb1f4c47845ed7a43685ea2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a7f8da2b16551f4bbc9ff25479c23b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spiritSoil: {fileID: 5651247903042490227}
+  forward: 0
+  right: 0
+  back: 0
+  left: 0

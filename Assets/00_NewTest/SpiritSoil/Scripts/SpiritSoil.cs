@@ -9,7 +9,17 @@ public class SpiritSoil : MonoBehaviour
     public string ID;
     public Vector3Int coord;
     public int rotation;
+
+    [Header("状态列表")]
     public bool selected;
+    public bool toppest;
+    public bool earthSpiritOccupied;
+
+    [Header("地灵系统")]
+    public GameObject earthSpirit_prefab;
+    public Transform spawnPoint;
+
+    [Header("游戏对象")]
     public GameObject modelContainer;
     public Animator animator;
 
@@ -19,6 +29,20 @@ public class SpiritSoil : MonoBehaviour
         rotation = 0;
         SpiritSoilPlaceInfo info = new SpiritSoilPlaceInfo(ID, coord, rotation);
         SpiritSoilManager.Instance.spiritSoilDic.Add(coord, info);
+
+        StartCoroutine(GenerateEarthSpirit());
+    }
+    public IEnumerator GenerateEarthSpirit()
+    {
+        float random = 0;
+        while (random < 99.8f || SpiritSoilManager.Instance.spiritSoilSelected)
+        {
+            random = Random.Range(0f, 100f);
+            yield return new WaitForSeconds(0.5f);
+        }
+        GameObject earthSpirit_Instance = Instantiate(earthSpirit_prefab, SpiritSoilManager.Instance.earthSpiritContainer);
+        earthSpirit_Instance.transform.position = spawnPoint.position;
+        earthSpiritOccupied = true;
     }
     public void UpdateModel(string modelID)
     {

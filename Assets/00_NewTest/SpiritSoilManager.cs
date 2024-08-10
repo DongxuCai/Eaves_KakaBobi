@@ -37,6 +37,11 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public GameObject grid;
     public GameObject cursor;
     public GameObject spiritSoil_Prefab;
+
+    [Header("引例存放位置")]
+    public Transform earthSpiritContainer;
+    public Transform elementContainer;
+
     [Header("基准平面")]
     public int level;
     public Plane levelPlane;
@@ -81,7 +86,11 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
         }
         if (Physics.Raycast(PlayerController.Instance.ray, out raycastHit, Mathf.Infinity, layerMask) && selectedSpiritSoil == null && !spiritSoilSelected)
         {
-            if (Input.GetMouseButtonDown(0)) { SelectSpiritSoil(); }
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (raycastHit.collider.GetComponentInParent<SpiritSoil>()) { SelectSpiritSoil(); }
+                else {raycastHit.collider.GetComponentInParent<EarthSpirit>().GetElement();}
+            }
         }
     }
     #region 息壤菜单

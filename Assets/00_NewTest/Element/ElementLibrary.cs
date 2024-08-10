@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthSpiritManager : MonoBehaviour
+public class ElementLibrary : MonoBehaviour
 {
-    public GameObject earthSpirit_Prefab;
     // Start is called before the first frame update
     void Start()
     {

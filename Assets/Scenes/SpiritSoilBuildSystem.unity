@@ -1434,6 +1434,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b5b46a5de8156946befe7fab33e7263, type: 3}
+--- !u!1 &242219948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242219949}
+  m_Layer: 0
+  m_Name: ElementContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242219949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242219948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1833698682}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &245548013 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1796040413458465897, guid: 5b5b46a5de8156946befe7fab33e7263, type: 3}
@@ -2812,6 +2842,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab46d3adc8574c46bc9af112ba1f3fd, type: 3}
+--- !u!1 &566676805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566676806}
+  m_Layer: 0
+  m_Name: EarthSpiritContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &566676806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566676805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1833698682}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &569476139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5651247903042490252, guid: 7aa63af3785e5a345b08333454ea3641, type: 3}
@@ -8282,6 +8342,8 @@ Transform:
   - {fileID: 1610508768}
   - {fileID: 1950646502}
   - {fileID: 2019407116}
+  - {fileID: 566676806}
+  - {fileID: 242219949}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8300,7 +8362,7 @@ MonoBehaviour:
   gridOccupation: []
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   defaultMenu: {fileID: 424276966}
   spiritSoilMenu: {fileID: 907930212}
   selectedSpiritSoilBasicInfoPanel: {fileID: 1413021932}
@@ -8308,6 +8370,8 @@ MonoBehaviour:
   grid: {fileID: 932327648}
   cursor: {fileID: 1610508767}
   spiritSoil_Prefab: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+  earthSpiritContainer: {fileID: 566676806}
+  elementContainer: {fileID: 242219949}
   level: 0
   selectedSpiritSoil: {fileID: 0}
   spiritSoilSelected: 0
@@ -9145,7 +9209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5386858793498965620, guid: 2f5c8030970a1954091391e1260b2797, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5386858793498965620, guid: 2f5c8030970a1954091391e1260b2797, type: 3}
       propertyPath: m_LocalPosition.y

@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -6542708503825742890, guid: a46448c3bd5c8c845a23e7578765abeb, type: 3}
+    - target: {fileID: 1929458813224157885, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929458813224157885, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Name
       value: SS_NanchanPalace_Prefab

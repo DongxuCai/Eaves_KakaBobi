@@ -8,6 +8,12 @@ public class SpiritSoil : MonoBehaviour
     [Header("基础数据")]
     public string ID;
     public Vector3Int coord;
+    [Header("切换形态")]
+    public bool shiftable;
+    public int index;
+    public int varieties;
+    [Header("旋转调整")]
+    public bool rotatable;
     public int rotation;
 
     [Header("状态列表")]
@@ -35,7 +41,7 @@ public class SpiritSoil : MonoBehaviour
     public IEnumerator GenerateEarthSpirit()
     {
         float random = 0;
-        while (random < 99.8f || SpiritSoilManager.Instance.spiritSoilSelected)
+        while (random < 99.9f || SpiritSoilManager.Instance.spiritSoilSelected || SpiritSoilManager.Instance.earthSpiritContainer.childCount > 5)
         {
             random = Random.Range(0f, 100f);
             yield return new WaitForSeconds(0.5f);
@@ -78,5 +84,11 @@ public class SpiritSoil : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         modelContainer.transform.rotation = Quaternion.Euler(new Vector3(0, rotation * 90f, 0));
+    }
+
+    public void Shift()
+    {
+        index = index == varieties - 1 ? 0 : index + 1;
+        UpdateModel(ID + '-' + index);
     }
 }

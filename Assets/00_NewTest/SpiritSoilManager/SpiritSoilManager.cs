@@ -32,7 +32,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public GameObject defaultMenu;
     public GameObject spiritSoilMenu;
     public GameObject selectedSpiritSoilBasicInfoPanel;
-    public GameObject spiritSoilAdjustmentMenu;
+    public SpiritSoilAdjustmentMenu spiritSoilAdjustmentMenu;
 
     public GameObject grid;
     public GameObject cursor;
@@ -52,7 +52,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
         defaultMenu.SetActive(true);
         spiritSoilMenu.SetActive(false);
         selectedSpiritSoilBasicInfoPanel.SetActive(false);
-        spiritSoilAdjustmentMenu.SetActive(false);
+        spiritSoilAdjustmentMenu.Close();
         grid.SetActive(false);
         cursor.SetActive(false);
         selectedSpiritSoil = null;
@@ -83,13 +83,15 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
                     selectedSpiritSoil.coord = GetWorldPositionCoord(cursor.transform.position);
                 }
             }
+            if (Input.mouseScrollDelta.y > 0) { UpdateLevelPlane(level + 1); }
+            if (Input.mouseScrollDelta.y < 0) { UpdateLevelPlane(level - 1); }
         }
         if (Physics.Raycast(PlayerController.Instance.ray, out raycastHit, Mathf.Infinity, layerMask) && selectedSpiritSoil == null && !spiritSoilSelected)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 if (raycastHit.collider.GetComponentInParent<SpiritSoil>()) { SelectSpiritSoil(); }
-                else {raycastHit.collider.GetComponentInParent<EarthSpirit>().GetElement();}
+                else { raycastHit.collider.GetComponentInParent<EarthSpirit>().GetElement(); }
             }
         }
     }
@@ -107,7 +109,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public void SelectSpiritSoilFromMenu()
     {
         spiritSoilMenu.SetActive(false);
-        spiritSoilAdjustmentMenu.SetActive(true);
+        spiritSoilAdjustmentMenu.Open(true, true, "ID");
         grid.SetActive(true);
         cursor.SetActive(true);
         spiritSoilSelected = true;
@@ -125,8 +127,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
 
         // 更新UI(菜单/基准平面和位置光标)
         defaultMenu.SetActive(false);
-        selectedSpiritSoilBasicInfoPanel.SetActive(true);
-        spiritSoilAdjustmentMenu.SetActive(true);
+        spiritSoilAdjustmentMenu.Open(selectedSpiritSoil.shiftable, selectedSpiritSoil.rotatable, selectedSpiritSoil.ID);
         grid.SetActive(true);
         cursor.SetActive(true);
         UpdateLevelPlane(selectedSpiritSoil.coord.y);
@@ -136,8 +137,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     }
     public void RecycleSpiritSoil()
     {
-        selectedSpiritSoilBasicInfoPanel.SetActive(false);
-        spiritSoilAdjustmentMenu.SetActive(false);
+        spiritSoilAdjustmentMenu.Close();
 
         defaultMenu.SetActive(true);
         Destroy(selectedSpiritSoil.gameObject);
@@ -148,7 +148,6 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     }
     public void DeselectSpiritSoil()
     {
-        selectedSpiritSoilBasicInfoPanel.SetActive(false);
         defaultMenu.SetActive(true);
         selectedSpiritSoil.Deselect();
         selectedSpiritSoil = null;
@@ -157,7 +156,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     #region 息壤移动菜单
     public void Shift()
     {
-
+        selectedSpiritSoil.Shift();
     }
     public void Rotate()
     {
@@ -166,8 +165,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public void Confirm()
     {
         // UI调整
-        selectedSpiritSoilBasicInfoPanel.SetActive(false);
-        spiritSoilAdjustmentMenu.SetActive(false);
+        spiritSoilAdjustmentMenu.Close();
         grid.SetActive(false);
         cursor.SetActive(false);
         defaultMenu.SetActive(true);
@@ -179,14 +177,6 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
         selectedSpiritSoil.Deselect();
         selectedSpiritSoil = null;
         spiritSoilSelected = false;
-    }
-    public void LevelPlaneUp()
-    {
-        UpdateLevelPlane(level + 1);
-    }
-    public void LevelPlaneDown()
-    {
-        UpdateLevelPlane(level - 1);
     }
     public void UpdateLevelPlane(int level)
     {

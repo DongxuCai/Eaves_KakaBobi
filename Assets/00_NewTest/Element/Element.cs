@@ -17,6 +17,7 @@ public class Element : MonoBehaviour
             yield return new WaitForEndOfFrame();
             element.transform.position = Vector3.Lerp(element.transform.position, Tripod.Instance.elementTarget.position, 0.2f);
         }
+        Destroy(element);
         Collect();
     }
     public void Collect()

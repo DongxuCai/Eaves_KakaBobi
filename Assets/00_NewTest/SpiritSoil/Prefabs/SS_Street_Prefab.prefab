@@ -1,19 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3481847370515472372
+--- !u!1001 &3104995269952264736
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 935277203877109292, guid: 24861808431721f419212eb0027ab1bc, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1111746828951273713, guid: 644eee25eb875214eb440e9fa493032a, type: 3}
     - target: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Name
-      value: SS_Pine_Prefab
+      value: SS_Street_Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 9207641985492401487, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_RootOrder
@@ -60,28 +56,57 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
-      propertyPath: rotatable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
-      propertyPath: shiftable
-      value: 0
+      propertyPath: ID
+      value: Street
       objectReference: {fileID: 0}
     - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4be5119d5276eaa46a3f0a73d046d73c, type: 2}
-    - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: ef35b16cdf262bc41a4d8275c584330f, type: 2}
+      objectReference: {fileID: 2100000, guid: d80039fc7ac0f3149a9e46586f87c317, type: 2}
     - target: {fileID: 9207641986303773244, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1111746828951273713, guid: 644eee25eb875214eb440e9fa493032a, type: 3}
+      objectReference: {fileID: -2579990343784765558, guid: 3cc7888b4eaf27b4e821f5f5eb8ed9d0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+--- !u!1 &6115665253012006766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+  m_PrefabInstance: {fileID: 3104995269952264736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6115665253012006800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+  m_PrefabInstance: {fileID: 3104995269952264736}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115665253012006766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4420c37c9b4d84d9994a3a6a6dcf7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5868897047870022041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115665253012006766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eaeed340bf995b4eb3a4080eb2d22dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spiritSoil: {fileID: 6115665253012006800}
+  forward: 0
+  right: 0
+  back: 0
+  left: 0
+  forwardRight: 0
+  rightBack: 0
+  backLeft: 0
+  leftForward: 0

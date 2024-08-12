@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Name
-      value: SS_StoneShore_Prefab
+      value: SS_StoneEdge_Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 9207641985492401487, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,22 @@ PrefabInstance:
     - target: {fileID: 9207641985492401487, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: ID
+      value: StoneEdge
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: rotatable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: shiftable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207641985492401584, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: varieties
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9207641986303773244, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Mesh

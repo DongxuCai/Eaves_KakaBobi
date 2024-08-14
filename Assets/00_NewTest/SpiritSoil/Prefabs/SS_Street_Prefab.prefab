@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 935277203877109292, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2579990343784765558, guid: 3cc7888b4eaf27b4e821f5f5eb8ed9d0, type: 3}
     - target: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Name
       value: SS_Street_Prefab
@@ -63,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e3e1180b6a682ab459890c4d9505440e, type: 2}
     - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 

@@ -78,6 +78,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 
   coord: {x: 0, y: 0, z: 0}
+  shiftable: 0
+  index: 0
+  varieties: 0
+  rotatable: 0
   rotation: 0
   selected: 0
   toppest: 0
@@ -165,6 +169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: e3e1180b6a682ab459890c4d9505440e, type: 2}
   - {fileID: 2100000, guid: ca4298e5d2d20004aa65fff6b8a61fb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -200,4 +205,4 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1453043773871479701, guid: f83124c704326764ab3a0a5001b46e8a, type: 3}
+  m_Mesh: {fileID: -2579990343784765558, guid: 3cc7888b4eaf27b4e821f5f5eb8ed9d0, type: 3}

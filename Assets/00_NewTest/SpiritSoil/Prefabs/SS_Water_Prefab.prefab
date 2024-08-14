@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 935277203877109292, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6564086670116265437, guid: f83124c704326764ab3a0a5001b46e8a, type: 3}
     - target: {fileID: 9207641985492401486, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Name
       value: SS_Water_Prefab
@@ -59,6 +63,18 @@ PrefabInstance:
       propertyPath: ID
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca4298e5d2d20004aa65fff6b8a61fb6, type: 2}
+    - target: {fileID: 9207641986303773243, guid: 24861808431721f419212eb0027ab1bc, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f26013b8469879443b6a3d1609aaeb99, type: 2}
     - target: {fileID: 9207641986303773244, guid: 24861808431721f419212eb0027ab1bc, type: 3}
       propertyPath: m_Mesh
       value: 

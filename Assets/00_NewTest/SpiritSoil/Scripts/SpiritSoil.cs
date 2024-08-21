@@ -89,6 +89,6 @@ public class SpiritSoil : MonoBehaviour
     public void Shift()
     {
         index = index == varieties - 1 ? 0 : index + 1;
-        UpdateModel(ID + '-' + index);
+        // UpdateModel(ID + '-' + index);
     }
 }

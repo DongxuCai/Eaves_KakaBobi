@@ -21,6 +21,7 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     public static Vector3 scale = new Vector3(5f, 2.5f, 5f);
     public static Vector3Int GetWorldPositionCoord(Vector3 coord)
     { return new Vector3Int(Mathf.RoundToInt(coord.x / scale.x), Mathf.RoundToInt(coord.y / scale.y), Mathf.RoundToInt(coord.z / scale.z)); }
+    public static int RotateRotation(int rotation, int degree) { rotation = rotation + degree > 2 ? rotation + degree - 4 : rotation + degree; return rotation; }
 
     public Dictionary<Vector3Int, SpiritSoilPlaceInfo> spiritSoilDic = new Dictionary<Vector3Int, SpiritSoilPlaceInfo>();
     public List<Vector3Int> gridOccupation = new List<Vector3Int>();

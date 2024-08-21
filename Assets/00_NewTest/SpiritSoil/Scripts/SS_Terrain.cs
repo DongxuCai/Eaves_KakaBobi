@@ -22,6 +22,11 @@ public class SS_Terrain : MonoBehaviour
         UpdateModel();
     }
 
+    public bool PlaceableCheck()
+    {
+        return true;
+    }
+
     public void UpdateModel()
     {
         if (!spiritSoil.selected)

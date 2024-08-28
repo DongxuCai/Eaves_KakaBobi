@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SS_Wall : MonoBehaviour
+public class SS_Gallery : MonoBehaviour
 {
     public SpiritSoil spiritSoil;
 
@@ -23,10 +23,10 @@ public class SS_Wall : MonoBehaviour
         SpiritSoilManager manager = SpiritSoilManager.Instance;
         Vector3Int neiCoord = coord + Tool.RotateDirection(direction, rotation);
         // 判断是否和自身（墙）相连 [只要相邻就会相连]
-        bool selfConnected = manager.SpiritSoilCheck(neiCoord, "Wall");
+        bool selfConnected = manager.SpiritSoilCheck(neiCoord, "Gallery");
         // 判断是否和门（特殊墙段）相连 [需要对应截面方向才会相连]
         bool specialConnected = false;
-        if (manager.SpiritSoilTypeCheck(neiCoord, "MoonGate"))
+        if (manager.SpiritSoilTypeCheck(neiCoord, "Pavilion"))
         {
             int rotation_1 = rotation - 1;
             int rotation_2 = rotation + 1;

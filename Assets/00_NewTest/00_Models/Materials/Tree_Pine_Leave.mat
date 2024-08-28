@@ -114,14 +114,14 @@ Material:
     - _leafGrow: 0
     - _moveMaskUseUV: 0
     - _needAnimation: 0
-    - _needClip: 0.8
+    - _needClip: 0.5
     - _needNormal: 0
     - _needPlantAnimation: 0
     - _needPreview: 0
     - _trunkGrow: 0
     m_Colors:
     - _CollapseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.45897117, g: 0.509434, b: 0.48016497, a: 1}
+    - _Color: {r: 0.9622642, g: 0.81247777, b: 0.8198064, a: 1}
     - _ColorSec: {r: 1, g: 1, b: 1, a: 1}
     - _DampMinMax: {r: 0, g: 0.2, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

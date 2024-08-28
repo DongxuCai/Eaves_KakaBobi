@@ -8,6 +8,20 @@ public class Tool : Singleton<Tool>
 {
     protected override void Awake() { base.Awake(); DontDestroyOnLoad(this); }
     public static Vector3Int RotateCoord(Vector3Int coord) { return new Vector3Int(coord.z, coord.y, -coord.x); }
+    public static int GetRotation(int rotation)
+    {
+        if (rotation > 2) { rotation -= 4; }
+        else if (rotation < -1) { rotation += 4; }
+        return rotation;
+    }
+    public static Vector3Int RotateDirection(Vector3Int direction, int rotation)
+    {
+        Vector3Int[] directions = new Vector3Int[4] { Vector3Int.forward, Vector3Int.right, Vector3Int.back, Vector3Int.left };
+        int result = Array.IndexOf(directions, direction) + rotation;
+        if (result > 3) { result -= 4; }
+        else if (result < 0) { result += 4; }
+        return directions[result];
+    }
     public static Vector3Int Vector3ToVector3Int(Vector3 inputVector)
     {
         int x = (int)inputVector.x;

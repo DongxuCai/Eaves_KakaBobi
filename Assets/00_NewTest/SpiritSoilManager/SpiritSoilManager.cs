@@ -192,4 +192,12 @@ public class SpiritSoilManager : Singleton<SpiritSoilManager>
     {
         return spiritSoilDic.ContainsKey(coord) && spiritSoilDic[coord].ID == ID;
     }
+
+    public bool SpiritSoilTypeCheck(Vector3Int coord, string type)
+    {
+        if (!spiritSoilDic.ContainsKey(coord)) return false;
+        if (!SpiritSoilLibrary.spiritSoilInfo.ContainsKey(spiritSoilDic[coord].ID)) return false;
+        if (SpiritSoilLibrary.spiritSoilInfo[spiritSoilDic[coord].ID] == type) return true;
+        return false;
+    }
 }

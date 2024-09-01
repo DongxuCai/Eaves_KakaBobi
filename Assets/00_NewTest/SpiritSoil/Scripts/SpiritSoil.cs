@@ -36,7 +36,7 @@ public class SpiritSoil : MonoBehaviour
         SpiritSoilPlaceInfo info = new SpiritSoilPlaceInfo(ID, coord, rotation);
         SpiritSoilManager.Instance.spiritSoilDic.Add(coord, info);
 
-        StartCoroutine(GenerateEarthSpirit());
+        // StartCoroutine(GenerateEarthSpirit());
     }
     public IEnumerator GenerateEarthSpirit()
     {
